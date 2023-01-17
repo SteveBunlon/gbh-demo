@@ -1,0 +1,50 @@
+<div class="c-smart-view">
+    <div class="c-smart-view__content">
+        <span class="c-smart-view_icon">{{@collection.iconOrDefault}}</span>
+        <h1>
+            {{@collection.pluralizedDisplayName}}
+            ({{@recordsCount}})
+        </h1>
+        <p>
+            Selected Records: {{this.count}}
+        </p>
+        {{log 'data' this.rows}}
+        <table
+          class="c-table-frame"
+          data-test-table-view
+        >
+            <thead class="l-table-frame-headers">
+                <tr class="l-table-frame-headers-line">
+                    {{#each this.columns as |column|}}
+                        {{column}}
+                    {{/each}}
+                </tr>
+            </thead>
+            <tbody class="l-table-frame-body">
+                {{#each this.rows as |row|}}
+                    <tr>
+                        {{#each this.columns as |column|}}
+                            <td>
+                                {{row.[column]}}
+                            </td>
+                        {{/each}}
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+        <Button::BetaButton
+          @type="primary"
+          @text="Update"
+          @action={{this.updateRecords}}
+          @async={{true}}
+          @textClass="c-billing-order-summary__upgrade-button-text"
+          data-test-button="validate-upgrade"
+          class="c-billing-order-summary__upgrade-button"
+        />
+    </div>
+</div>
+
+
+
+
