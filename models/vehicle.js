@@ -100,7 +100,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DOUBLE,
     },
     image: {
-      type: DataTypes.BLOB,
+      type: DataTypes.STRING,
     }
   }, {
     tableName: 'vehicle',
