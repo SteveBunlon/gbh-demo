@@ -19091,7 +19091,60 @@
       "validations": []
     }],
     "segments": [],
-    "actions": []
+    "actions": [{
+      "name": "Modifier",
+      "type": "bulk",
+      "baseUrl": null,
+      "endpoint": "/forest/actions/modifier",
+      "httpMethod": "POST",
+      "redirect": null,
+      "download": false,
+      "fields": [{
+        "field": "Type Principal",
+        "type": "Enum",
+        "defaultValue": null,
+        "enums": null,
+        "isRequired": false,
+        "reference": null,
+        "description": null,
+        "position": 0,
+        "widget": null
+      }, {
+        "field": "Types Secondaires",
+        "type": ["Enum"],
+        "defaultValue": null,
+        "enums": null,
+        "isRequired": false,
+        "reference": null,
+        "description": null,
+        "position": 1,
+        "widget": null
+      }, {
+        "field": "Montant Caution",
+        "type": "Number",
+        "defaultValue": null,
+        "enums": null,
+        "isRequired": false,
+        "reference": null,
+        "description": null,
+        "position": 2,
+        "widget": null
+      }, {
+        "field": "Montant franchise",
+        "type": "Number",
+        "defaultValue": null,
+        "enums": null,
+        "isRequired": false,
+        "reference": null,
+        "description": null,
+        "position": 3,
+        "widget": null
+      }],
+      "hooks": {
+        "load": true,
+        "change": []
+      }
+    }]
   }, {
     "name": "vehicleCategory",
     "nameOld": "vehicleCategory",

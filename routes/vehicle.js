@@ -58,4 +58,8 @@ router.delete('/vehicle', permissionMiddlewareCreator.delete(), (request, respon
   next();
 });
 
+router.post('/actions/modifier', permissionMiddlewareCreator.update(), (request, response, next) => {
+  response.status(200).send({ success: 'The cars have been updated' });
+})
+
 module.exports = router;
