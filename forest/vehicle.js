@@ -93,6 +93,58 @@ collection('vehicle', {
       }
     }
   }],
-  fields: [],
+  fields: [{
+    field: 'Type Primaire',
+    type: 'String',
+    get: async (currentVehicle) => {
+      const options = {
+        where: { vehicleId: currentVehicle.vehicleId },
+        include: [
+          {
+            model: vehicleTypeLink,
+            as: 'vehicleTypeLinks',
+            include: {
+              model: vehicleType,
+              as: 'vehicleType',
+            }
+          }
+        ]
+      }
+
+      const vehicleFound = await vehicle.findOne(options);
+      if (vehicleFound.vehicleTypeLinks?.length) {
+        const typePrimary = vehicleFound.vehicleTypeLinks.find((vtl) => vtl.primaryLink === 1);
+        return typePrimary.vehicleType.name;
+      }
+
+      return null;
+    }
+  }, {
+    field: 'Types Secondaires',
+    type: ['String'],
+    get: async (currentVehicle) => {
+      const options = {
+        where: { vehicleId: currentVehicle.vehicleId },
+        include: [
+          {
+            model: vehicleTypeLink,
+            as: 'vehicleTypeLinks',
+            include: {
+              model: vehicleType,
+              as: 'vehicleType',
+            }
+          }
+        ]
+      }
+
+      const vehicleFound = await vehicle.findOne(options);
+      if (vehicleFound.vehicleTypeLinks?.length) {
+        const typeSecondary = vehicleFound.vehicleTypeLinks.filter((vtl) => vtl.primaryLink === 0);
+        return typeSecondary.map((vtl) => vtl.vehicleType.name);
+      }
+
+      return null;
+    }
+  }],
   segments: [],
 });
