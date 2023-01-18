@@ -109,7 +109,7 @@ module.exports = (sequelize, DataTypes) => {
         field: 'branch_id',
       },
       sourceKey: 'branchId',
-      as: 'attributes',
+      as: 'branch_attributes',
     });
     Branch.hasMany(models.branchTranslation, {
       foreignKey: {
