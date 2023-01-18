@@ -99,6 +99,9 @@ module.exports = (sequelize, DataTypes) => {
     excessTotalDeductible: {
       type: DataTypes.DOUBLE,
     },
+    image: {
+      type: DataTypes.BLOB,
+    }
   }, {
     tableName: 'vehicle',
     underscored: true,

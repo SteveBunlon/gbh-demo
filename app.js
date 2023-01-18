@@ -44,7 +44,7 @@ app.use('/forest/authentication', cors({
   origin: corsConfig.origin.concat('null')
 }));
 app.use(cors(corsConfig));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
